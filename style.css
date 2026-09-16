@@ -1,0 +1,1594 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+font-family:"Space Grotesk",sans-serif;
+background:#fffafc;
+color:#29202d;
+overflow-x:hidden
+}
+
+button{
+font-family:inherit
+}
+
+.hidden{
+display:none!important
+}
+
+
+/* =========================
+   OPENING CAKE
+========================= */
+
+#cakeIntro{
+position:fixed;
+inset:0;
+z-index:50;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:
+radial-gradient(circle at 15% 20%,#ffe0ed 0,transparent 25%),
+radial-gradient(circle at 85% 75%,#e4ddff 0,transparent 27%),
+#fffafc;
+overflow:hidden;
+transition:opacity .8s ease,visibility .8s ease
+}
+
+#cakeIntro.hide{
+opacity:0;
+visibility:hidden;
+pointer-events:none
+}
+
+.intro-small{
+font-family:Kalam,cursive;
+font-size:21px;
+margin-bottom:5px;
+transform:rotate(-3deg);
+animation:introText .7s ease both
+}
+
+.pretty-cake{
+position:relative;
+width:370px;
+height:330px;
+margin-bottom:0;
+animation:cakeFloat 3s 4.5s ease-in-out infinite
+}
+
+.cake-shadow{
+position:absolute;
+bottom:24px;
+left:42px;
+width:285px;
+height:24px;
+background:#29172d22;
+border-radius:50%;
+filter:blur(5px);
+animation:shadowIn .6s .2s ease both
+}
+
+.cake-plate{
+position:absolute;
+bottom:25px;
+left:35px;
+width:300px;
+height:35px;
+background:#f4eaff;
+border:3px solid #29202d;
+border-radius:50%;
+box-shadow:0 5px 0 #29202d;
+transform:scale(0);
+animation:plateIn .5s .3s ease forwards
+}
+
+.cake-tier{
+position:absolute;
+left:50%;
+transform:translateX(-50%) scaleY(0);
+transform-origin:bottom;
+border:3px solid #29202d;
+box-shadow:4px 5px 0 #29202d;
+animation:tierIn .7s ease forwards
+}
+
+.tier-bottom{
+bottom:52px;
+width:260px;
+height:85px;
+background:linear-gradient(#ff91bb,#ff72a7);
+border-radius:20px 20px 15px 15px;
+animation-delay:.8s
+}
+
+.tier-middle{
+bottom:125px;
+width:210px;
+height:68px;
+background:linear-gradient(#b4a4ff,#9582ed);
+border-radius:18px 18px 13px 13px;
+animation-delay:1.45s
+}
+
+.tier-top{
+bottom:183px;
+width:160px;
+height:58px;
+background:linear-gradient(#71decf,#50cdbb);
+border-radius:17px 17px 12px 12px;
+animation-delay:2.1s
+}
+
+.cake-frosting{
+position:absolute;
+bottom:227px;
+left:105px;
+width:160px;
+height:27px;
+background:#fff7fb;
+border:3px solid #29202d;
+border-radius:50%;
+transform:scaleX(0);
+animation:frostingIn .6s 2.65s ease forwards
+}
+
+.cake-frosting span{
+position:absolute;
+bottom:-14px;
+width:22px;
+height:24px;
+background:#fff7fb;
+border-bottom:3px solid #29202d;
+border-radius:0 0 15px 15px
+}
+
+.cake-frosting span:nth-child(1){
+left:20px
+}
+
+.cake-frosting span:nth-child(2){
+left:68px
+}
+
+.cake-frosting span:nth-child(3){
+right:20px
+}
+
+.cream-drip{
+position:absolute;
+top:-7px;
+width:25px;
+height:30px;
+background:#fff7fb;
+border:3px solid #29202d;
+border-top:0;
+border-radius:0 0 15px 15px;
+opacity:0;
+animation:dripIn .4s 3s ease forwards
+}
+
+.drip-1{left:35px}
+.drip-2{left:105px}
+.drip-3{right:35px}
+.drip-4{left:165px}
+.drip-5{left:35px}
+.drip-6{left:92px}
+.drip-7{right:35px}
+
+.sprinkle{
+position:absolute;
+font-size:30px;
+font-weight:900;
+color:#29202d;
+opacity:0;
+animation:sprinkleIn .4s 3.2s ease forwards
+}
+
+.sp1{
+left:95px;
+bottom:90px;
+transform:rotate(20deg)
+}
+
+.sp2{
+left:150px;
+bottom:112px;
+animation-delay:3.3s
+}
+
+.sp3{
+right:100px;
+bottom:92px;
+animation-delay:3.4s
+}
+
+.sp4{
+left:145px;
+bottom:155px;
+animation-delay:3.5s
+}
+
+.sp5{
+right:135px;
+bottom:160px;
+animation-delay:3.6s
+}
+
+.cherry{
+position:absolute;
+font-size:27px;
+color:#ff527f;
+text-shadow:2px 2px 0 #29202d;
+opacity:0;
+transform:scale(0);
+animation:cherryIn .5s 3.7s ease forwards
+}
+
+.cherry1{
+left:113px;
+bottom:214px
+}
+
+.cherry2{
+left:175px;
+bottom:235px;
+animation-delay:3.85s
+}
+
+.cherry3{
+right:107px;
+bottom:214px;
+animation-delay:4s
+}
+
+.candle{
+position:absolute;
+left:50%;
+bottom:230px;
+width:27px;
+height:70px;
+background:repeating-linear-gradient(
+135deg,
+#ff5d98 0 8px,
+#fff 8px 16px
+);
+border:3px solid #29202d;
+border-radius:8px;
+transform:translateX(-50%) scaleY(0);
+transform-origin:bottom;
+animation:candleIn .6s 4.05s ease forwards
+}
+
+.candle-flame{
+position:absolute;
+left:50%;
+top:-35px;
+width:25px;
+height:35px;
+background:#ffd85c;
+border:3px solid #29202d;
+border-radius:55% 45% 55% 45%;
+transform:translateX(-50%) scale(0) rotate(45deg);
+animation:flameIn .5s 4.6s ease forwards
+}
+
+.candle-flame:after{
+content:"";
+position:absolute;
+width:9px;
+height:14px;
+background:#ff9b4a;
+border-radius:50%;
+left:5px;
+top:7px
+}
+
+.intro-title{
+font-size:clamp(32px,6vw,52px);
+line-height:.95;
+font-weight:900;
+letter-spacing:-2px;
+opacity:0;
+animation:showIntro 1s 4.7s ease forwards
+}
+
+.intro-title span{
+color:#ff4f91
+}
+
+.intro-ready{
+font-family:Kalam,cursive;
+font-size:22px;
+margin-top:12px;
+opacity:0;
+animation:showIntro 1s 5s ease forwards
+}
+
+.intro-btn{
+border:0;
+background:#29202d;
+color:#fff;
+padding:14px 25px;
+border-radius:50px;
+font-weight:900;
+cursor:pointer;
+box-shadow:5px 5px 0 #ffb3cf;
+margin-top:17px;
+opacity:0;
+animation:showIntro 1s 5.2s ease forwards;
+transition:.2s
+}
+
+.intro-btn:hover{
+transform:translate(-2px,-2px);
+box-shadow:7px 7px 0 #ffb3cf
+}
+
+.intro-spark{
+position:absolute;
+font-family:Kalam,cursive;
+font-size:50px;
+color:#ff4f91;
+opacity:.75;
+animation:floatSpark 2.5s ease-in-out infinite
+}
+
+.cake-s1{
+top:13%;
+left:15%
+}
+
+.cake-s2{
+top:25%;
+right:13%;
+animation-delay:.4s
+}
+
+.cake-s3{
+bottom:18%;
+left:12%;
+animation-delay:.8s
+}
+
+.cake-s4{
+bottom:22%;
+right:15%;
+animation-delay:1.2s
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+padding:40px 20px;
+overflow:hidden;
+background:
+radial-gradient(circle at 10% 20%,#ffdce9,transparent 25%),
+radial-gradient(circle at 90% 80%,#e5ddff,transparent 30%),
+#fffafc
+}
+
+.hero-content{
+max-width:850px;
+text-align:center;
+position:relative;
+z-index:2
+}
+
+.eyebrow{
+font-size:11px;
+font-weight:700;
+letter-spacing:2.5px;
+text-transform:uppercase;
+color:#8b7182;
+margin-bottom:16px
+}
+
+.hero h1{
+font-size:clamp(65px,11vw,135px);
+line-height:.82;
+letter-spacing:-7px;
+font-weight:900
+}
+
+.hero h1 span{
+color:#ff4f91;
+-webkit-text-stroke:2px #29202d
+}
+
+.hero-text{
+font-family:Kalam,cursive;
+font-size:22px;
+max-width:600px;
+margin:28px auto 22px;
+transform:rotate(-1deg)
+}
+
+.surprise-btn{
+border:2px solid #29202d;
+background:#29202d;
+color:#fff;
+padding:17px 28px;
+border-radius:50px;
+font-size:14px;
+font-weight:900;
+cursor:pointer;
+box-shadow:5px 5px 0 #ffb3cf;
+transition:.2s
+}
+
+.surprise-btn:hover{
+transform:translate(-3px,-3px);
+box-shadow:8px 8px 0 #ffb3cf
+}
+
+.birthday-date{
+margin-top:23px;
+font-family:Kalam,cursive;
+font-size:21px
+}
+
+.scroll-note{
+margin-top:50px;
+font-size:12px;
+color:#8b7182
+}
+
+.hero-doodle{
+position:absolute;
+font-family:Kalam,cursive;
+font-size:55px;
+color:#ff4f91;
+opacity:.6;
+animation:floatSpark 3s ease-in-out infinite
+}
+
+.doodle-one{
+left:10%;
+top:20%
+}
+
+.doodle-two{
+right:12%;
+top:25%;
+animation-delay:.6s
+}
+
+.doodle-three{
+left:15%;
+bottom:15%;
+animation-delay:1s
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+.section{
+max-width:1150px;
+margin:auto;
+padding:90px 25px
+}
+
+.section-head{
+display:flex;
+align-items:flex-start;
+gap:18px;
+margin-bottom:28px
+}
+
+.scribble{
+font-family:Kalam,cursive;
+font-size:36px;
+color:#ff4f91;
+transform:rotate(-8deg)
+}
+
+.section-head h2{
+font-size:clamp(38px,6vw,70px);
+line-height:.9;
+letter-spacing:-3px;
+font-weight:900
+}
+
+.section-note{
+max-width:650px;
+font-family:Kalam,cursive;
+font-size:20px;
+margin-bottom:35px;
+color:#6f5967
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+background:#fff
+}
+
+.intro-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px
+}
+
+.intro-card{
+border:2px solid #29202d;
+border-radius:25px;
+padding:38px;
+position:relative;
+box-shadow:5px 5px 0 #e9d8ff
+}
+
+.intro-main{
+background:#fff0f6
+}
+
+.intro-side{
+background:#e9e3ff;
+display:flex;
+flex-direction:column;
+justify-content:center
+}
+
+.card-sticker{
+position:absolute;
+top:-15px;
+right:25px;
+background:#ffd85c;
+border:2px solid #29202d;
+padding:8px 14px;
+font-size:10px;
+font-weight:900;
+transform:rotate(4deg)
+}
+
+.intro-card h3{
+font-size:40px;
+line-height:.95;
+letter-spacing:-2px;
+margin-bottom:23px
+}
+
+.intro-card p{
+font-size:16px;
+line-height:1.7;
+max-width:650px
+}
+
+.tiny-note{
+font-family:Kalam,cursive;
+font-size:18px;
+margin-top:22px;
+color:#8b7182
+}
+
+.big-number{
+font-size:120px;
+line-height:.8;
+font-weight:900;
+color:#ff4f91;
+-webkit-text-stroke:2px #29202d
+}
+
+.intro-side p{
+font-family:Kalam,cursive;
+font-size:21px;
+margin-top:18px
+}
+
+.mini-doodles{
+font-size:28px;
+margin-top:27px;
+letter-spacing:8px
+}
+
+
+/* =========================
+   MEMORY TAPE
+========================= */
+
+.memories{
+background:#fffafc;
+overflow:hidden
+}
+
+.memory-tape{
+width:100vw;
+position:relative;
+left:50%;
+transform:translateX(-50%);
+padding:10px 0 25px;
+overflow:hidden
+}
+
+.tape-row{
+display:flex;
+width:max-content;
+gap:18px;
+margin:18px 0
+}
+
+.tape-row-one{
+animation:memoryLeft 32s linear infinite
+}
+
+.tape-row-two{
+animation:memoryRight 36s linear infinite
+}
+
+.memory-photo{
+width:190px;
+height:190px;
+object-fit:cover;
+flex-shrink:0;
+border:2px solid #29202d;
+background:#fff;
+padding:7px;
+box-shadow:4px 4px 0 #eadfff;
+transition:.3s ease;
+cursor:pointer
+}
+
+.memory-photo:nth-child(3n){
+transform:rotate(-2deg)
+}
+
+.memory-photo:nth-child(4n){
+transform:rotate(2deg)
+}
+
+.memory-photo:hover{
+transform:translateY(-7px) rotate(0) scale(1.04);
+box-shadow:6px 7px 0 #ffd1e2;
+z-index:5
+}
+
+
+/* =========================
+   CAKE CHALLENGE
+========================= */
+
+.cake-challenge{
+background:#fff
+}
+
+.cake-game{
+display:grid;
+grid-template-columns:360px 1fr;
+gap:35px;
+align-items:start
+}
+
+.cake-palette{
+border:2px solid #29202d;
+border-radius:25px;
+padding:25px;
+background:#fff4f8;
+box-shadow:6px 6px 0 #ded4ff
+}
+
+.cake-palette h3{
+font-size:23px;
+letter-spacing:-1px
+}
+
+.cake-palette>p{
+font-family:Kalam,cursive;
+font-size:17px;
+line-height:1.4;
+margin:8px 0 20px;
+color:#715c68
+}
+
+.piece-option{
+display:flex;
+align-items:center;
+gap:12px;
+border:2px solid #29202d;
+background:#fff;
+border-radius:16px;
+padding:12px;
+margin-bottom:12px;
+cursor:grab;
+touch-action:none;
+transition:.2s
+}
+
+.piece-option:hover{
+transform:translateX(3px);
+box-shadow:3px 3px 0 #ffb6d1
+}
+
+.piece-option:active{
+cursor:grabbing
+}
+
+.piece-preview{
+width:58px;
+height:42px;
+border:2px solid #29202d;
+border-radius:10px;
+flex-shrink:0
+}
+
+.base-preview{
+background:#ff8fb8;
+height:35px;
+margin-top:7px
+}
+
+.layer-preview{
+background:#a998ff;
+height:29px;
+margin-top:6px
+}
+
+.cream-preview{
+background:#ffe36e;
+height:20px;
+border-radius:20px
+}
+
+.top-preview{
+background:#68d7c5;
+height:18px;
+border-radius:18px
+}
+
+.candle-preview{
+background:#ff5d98;
+width:25px;
+height:43px;
+margin-left:16px;
+position:relative
+}
+
+.candle-preview span{
+position:absolute;
+width:12px;
+height:15px;
+background:#ffd85c;
+border:2px solid #29202d;
+border-radius:50%;
+left:4px;
+top:-19px
+}
+
+.piece-info{
+display:flex;
+flex-direction:column;
+gap:2px;
+flex:1
+}
+
+.piece-info strong{
+font-size:13px
+}
+
+.piece-info small{
+font-family:Kalam,cursive;
+font-size:14px;
+color:#8b7182
+}
+
+.piece-color{
+width:38px;
+height:38px;
+padding:0;
+border:2px solid #29202d;
+border-radius:50%;
+background:none;
+cursor:pointer;
+overflow:hidden;
+flex-shrink:0
+}
+
+.piece-color::-webkit-color-swatch-wrapper{
+padding:0
+}
+
+.piece-color::-webkit-color-swatch{
+border:0;
+border-radius:50%
+}
+
+.clear-cake{
+width:100%;
+border:2px solid #29202d;
+background:#fff;
+padding:13px;
+border-radius:14px;
+font-weight:900;
+cursor:pointer;
+margin-top:5px;
+transition:.2s
+}
+
+.clear-cake:hover{
+background:#29202d;
+color:#fff
+}
+
+.cake-board-wrap{
+min-width:0
+}
+
+.board-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:900;
+font-size:17px;
+margin-bottom:12px
+}
+
+.board-title span:last-child{
+font-family:Kalam,cursive;
+font-weight:400;
+color:#8b7182
+}
+
+.cake-board{
+height:500px;
+border:2px dashed #29202d;
+border-radius:30px;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at 20% 20%,#ffe4ef 0 3px,transparent 4px),
+radial-gradient(circle at 80% 30%,#e6dfff 0 3px,transparent 4px),
+radial-gradient(circle at 60% 80%,#d9f7f1 0 3px,transparent 4px),
+#fffafc;
+background-size:80px 80px;
+touch-action:none
+}
+
+.board-hint{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+gap:8px;
+color:#9b8491;
+font-weight:900;
+text-align:center;
+pointer-events:none
+}
+
+.board-hint span{
+font-size:60px
+}
+
+.board-hint small{
+font-family:Kalam,cursive;
+font-size:17px;
+font-weight:400
+}
+
+.cake-board.has-pieces .board-hint{
+opacity:0
+}
+
+.placed-piece{
+position:absolute;
+z-index:2;
+border:2px solid #29202d;
+box-shadow:3px 3px 0 #29202d;
+cursor:grab;
+touch-action:none;
+user-select:none;
+transition:box-shadow .15s,transform .15s
+}
+
+.placed-piece.selected{
+cursor:grabbing;
+box-shadow:6px 6px 0 #29202d;
+z-index:20
+}
+
+.placed-base{
+width:190px;
+height:90px;
+border-radius:20px 20px 15px 15px
+}
+
+.placed-layer{
+width:150px;
+height:65px;
+border-radius:18px 18px 12px 12px
+}
+
+.placed-cream{
+width:170px;
+height:30px;
+border-radius:50%
+}
+
+.placed-top{
+width:115px;
+height:45px;
+border-radius:50% 50% 15px 15px
+}
+
+.placed-candle{
+width:30px;
+height:85px;
+border-radius:9px
+}
+
+.placed-candle:after{
+content:"";
+position:absolute;
+left:50%;
+top:-32px;
+width:24px;
+height:30px;
+background:#ffd85c;
+border:3px solid #29202d;
+border-radius:55% 45% 55% 45%;
+transform:translateX(-50%) rotate(45deg)
+}
+
+.ready-cake{
+width:100%;
+margin-top:20px;
+padding:17px;
+border:2px solid #29202d;
+background:#29202d;
+color:#fff;
+border-radius:18px;
+font-weight:900;
+font-size:15px;
+cursor:pointer;
+box-shadow:5px 5px 0 #ffb3cf;
+transition:.2s
+}
+
+.ready-cake:hover{
+transform:translate(-2px,-2px);
+box-shadow:7px 7px 0 #ffb3cf
+}
+
+.cake-message{
+margin-top:25px;
+padding:30px;
+border:2px solid #29202d;
+border-radius:25px;
+background:#fff0f6;
+text-align:center;
+box-shadow:5px 5px 0 #dcd1ff;
+animation:messageIn .6s ease
+}
+
+.message-star{
+font-size:40px;
+color:#ff4f91
+}
+
+.cake-message h3{
+font-size:30px;
+margin:5px 0 10px
+}
+
+.cake-message p{
+font-family:Kalam,cursive;
+font-size:19px;
+line-height:1.5;
+margin-bottom:15px
+}
+
+.cake-message>div:last-child{
+font-weight:900;
+color:#ff4f91
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter{
+background:#fffafc;
+display:flex;
+justify-content:center
+}
+
+.letter-paper{
+max-width:750px;
+width:100%;
+background:#fff;
+border:2px solid #29202d;
+padding:55px;
+position:relative;
+box-shadow:6px 6px 0 #ffd1e2;
+transform:rotate(-1deg)
+}
+
+.letter-tape{
+position:absolute;
+top:-17px;
+left:50%;
+transform:translateX(-50%) rotate(2deg);
+background:#ffe58b;
+padding:8px 30px;
+border:2px solid #29202d;
+font-size:18px
+}
+
+.letter-paper h2{
+font-size:43px;
+letter-spacing:-2px;
+margin-bottom:25px
+}
+
+.letter-paper p{
+font-family:Kalam,cursive;
+font-size:20px;
+line-height:1.7;
+margin-bottom:20px
+}
+
+.letter-sign{
+font-family:Kalam,cursive;
+font-size:25px;
+color:#ff4f91;
+text-align:right;
+margin-top:30px
+}
+
+
+/* =========================
+   ENDING
+========================= */
+
+.ending{
+min-height:80vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:
+radial-gradient(circle at 15% 20%,#ffe0ed,transparent 25%),
+radial-gradient(circle at 85% 80%,#e4ddff,transparent 30%),
+#fffafc
+}
+
+.ending-doodles{
+font-family:Kalam,cursive;
+font-size:32px;
+color:#ff4f91;
+letter-spacing:9px;
+margin-bottom:25px
+}
+
+.ending h2{
+font-size:clamp(55px,11vw,125px);
+line-height:.8;
+letter-spacing:-6px
+}
+
+.ending h2 span{
+color:#ff4f91;
+-webkit-text-stroke:2px #29202d
+}
+
+.ending>p{
+font-family:Kalam,cursive;
+font-size:21px;
+margin-top:32px
+}
+
+.ending-line{
+width:90px;
+height:3px;
+background:#29202d;
+margin:28px 0
+}
+
+.ending .small-ending{
+font-size:15px;
+color:#8b7182
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+position:fixed;
+inset:0;
+z-index:100;
+background:#29202dcc;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal-box{
+background:#fff;
+max-width:700px;
+width:100%;
+padding:15px;
+border:2px solid #29202d;
+box-shadow:7px 7px 0 #ffb3cf;
+position:relative;
+animation:messageIn .3s ease
+}
+
+.modal-box img{
+width:100%;
+max-height:75vh;
+object-fit:contain;
+display:block;
+background:#f7edf2
+}
+
+.modal-box p{
+font-family:Kalam,cursive;
+font-size:20px;
+padding:15px 5px 5px
+}
+
+.close{
+position:absolute;
+right:-15px;
+top:-15px;
+width:40px;
+height:40px;
+border:2px solid #29202d;
+background:#ff75a8;
+border-radius:50%;
+font-size:27px;
+font-weight:900;
+cursor:pointer;
+z-index:2
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+#confetti{
+position:fixed;
+inset:0;
+z-index:200;
+pointer-events:none;
+overflow:hidden
+}
+
+#confetti .piece{
+position:absolute;
+width:10px;
+height:18px;
+animation:fall 3.5s linear forwards
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes plateIn{
+0%{
+transform:scale(0)
+}
+100%{
+transform:scale(1)
+}
+}
+
+@keyframes tierIn{
+0%{
+transform:translateX(-50%) scaleY(0)
+}
+
+70%{
+transform:translateX(-50%) scaleY(1.08)
+}
+
+100%{
+transform:translateX(-50%) scaleY(1)
+}
+}
+
+@keyframes frostingIn{
+0%{
+transform:scaleX(0)
+}
+
+100%{
+transform:scaleX(1)
+}
+}
+
+@keyframes dripIn{
+0%{
+opacity:0;
+transform:translateY(-8px)
+}
+
+100%{
+opacity:1;
+transform:translateY(0)
+}
+}
+
+@keyframes sprinkleIn{
+0%{
+opacity:0;
+transform:scale(0) rotate(0)
+}
+
+100%{
+opacity:1;
+transform:scale(1) rotate(15deg)
+}
+}
+
+@keyframes cherryIn{
+0%{
+opacity:0;
+transform:scale(0)
+}
+
+80%{
+transform:scale(1.15)
+}
+
+100%{
+opacity:1;
+transform:scale(1)
+}
+}
+
+@keyframes candleIn{
+0%{
+transform:translateX(-50%) scaleY(0)
+}
+
+100%{
+transform:translateX(-50%) scaleY(1)
+}
+}
+
+@keyframes flameIn{
+0%{
+transform:translateX(-50%) scale(0) rotate(45deg)
+}
+
+100%{
+transform:translateX(-50%) scale(1) rotate(45deg)
+}
+}
+
+@keyframes showIntro{
+to{
+opacity:1
+}
+}
+
+@keyframes introText{
+from{
+opacity:0;
+transform:translateY(10px) rotate(-3deg)
+}
+
+to{
+opacity:1;
+transform:translateY(0) rotate(-3deg)
+}
+}
+
+@keyframes cakeFloat{
+0%,100%{
+transform:translateY(0) rotate(0)
+}
+
+50%{
+transform:translateY(-7px) rotate(-1deg)
+}
+}
+
+@keyframes shadowIn{
+from{
+transform:scaleX(0)
+}
+
+to{
+transform:scaleX(1)
+}
+}
+
+@keyframes floatSpark{
+50%{
+transform:translateY(-10px) rotate(6deg)
+}
+}
+
+@keyframes messageIn{
+from{
+opacity:0;
+transform:translateY(20px) scale(.96)
+}
+
+to{
+opacity:1;
+transform:translateY(0) scale(1)
+}
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+opacity:0
+}
+}
+
+@keyframes memoryLeft{
+from{
+transform:translateX(0)
+}
+
+to{
+transform:translateX(-50%)
+}
+}
+
+@keyframes memoryRight{
+from{
+transform:translateX(-50%)
+}
+
+to{
+transform:translateX(0)
+}
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+.photo-wall{
+grid-template-columns:repeat(3,1fr)
+}
+
+.cake-game{
+grid-template-columns:1fr
+}
+
+.cake-palette{
+max-width:650px;
+width:100%;
+margin:auto
+}
+
+}
+
+
+@media(max-width:650px){
+
+.section{
+padding:70px 18px
+}
+
+.section-head{
+gap:12px
+}
+
+.section-head h2{
+font-size:43px;
+letter-spacing:-3px
+}
+
+.scribble{
+font-size:30px
+}
+
+.intro-grid{
+grid-template-columns:1fr
+}
+
+.intro-card{
+padding:28px
+}
+
+.intro-card h3{
+font-size:32px
+}
+
+.big-number{
+font-size:100px
+}
+
+
+/* MEMORY TAPE */
+
+.memory-photo{
+width:145px;
+height:145px;
+padding:6px
+}
+
+.tape-row{
+gap:12px;
+margin:12px 0
+}
+
+.tape-row-one{
+animation-duration:27s
+}
+
+.tape-row-two{
+animation-duration:31s
+}
+
+.memory-tape{
+padding-bottom:15px
+}
+
+
+/* HERO */
+
+.hero{
+padding:30px 15px
+}
+
+.hero h1{
+font-size:65px;
+letter-spacing:-5px
+}
+
+.hero-text{
+font-size:19px
+}
+
+.hero-doodle{
+font-size:38px;
+opacity:.5
+}
+
+
+/* CAKE */
+
+.cake-board{
+height:430px;
+border-radius:22px
+}
+
+.cake-palette{
+padding:18px
+}
+
+.piece-option{
+padding:9px
+}
+
+.placed-base{
+width:145px;
+height:70px
+}
+
+.placed-layer{
+width:115px;
+height:52px
+}
+
+.placed-cream{
+width:130px;
+height:25px
+}
+
+.placed-top{
+width:90px;
+height:35px
+}
+
+.placed-candle{
+width:25px;
+height:70px
+}
+
+
+/* LETTER */
+
+.letter-paper{
+padding:45px 25px
+}
+
+.letter-paper h2{
+font-size:35px
+}
+
+.letter-paper p{
+font-size:18px
+}
+
+
+/* ENDING */
+
+.ending h2{
+font-size:65px;
+letter-spacing:-4px
+}
+
+}
+
+
+@media(max-width:430px){
+
+.pretty-cake{
+transform:scale(.78);
+margin-top:-20px;
+margin-bottom:-45px
+}
+
+.intro-title{
+font-size:31px
+}
+
+.intro-small{
+font-size:19px
+}
+
+.intro-ready{
+font-size:19px
+}
+
+.intro-btn{
+padding:12px 22px
+}
+
+.photo-wall{
+display:none
+}
+
+.cake-board{
+height:390px
+}
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+.tape-row-one,
+.tape-row-two{
+animation:none
+}
+
+.memory-photo{
+transition:none
+}
+
+}
